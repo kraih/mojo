@@ -251,11 +251,11 @@ subtest 'Content blocks' => sub {
 };
 
 subtest 'Inline template' => sub {
-  $t->get_ok('/inline')->status_is(200)->header_is(Server => 'Mojolicious (Perl)')->content_is("inline!\n");
+  $t->get_ok('/inline')->status_is(200)->header_is(Server => 'Mojolicious (Perl)')->content_is("Defaultinline!\n\n");
 };
 
 subtest '"0" inline template' => sub {
-  $t->get_ok('/inline/again')->status_is(200)->header_is(Server => 'Mojolicious (Perl)')->content_is("0\n");
+  $t->get_ok('/inline/again')->status_is(200)->header_is(Server => 'Mojolicious (Perl)')->content_is("Default0\n\n");
 };
 
 subtest '"0" data' => sub {
