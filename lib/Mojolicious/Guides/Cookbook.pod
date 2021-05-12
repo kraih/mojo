@@ -1408,7 +1408,7 @@ to process requests in smaller batches.
   # Use a promise to keep the event loop running until we are done
   my $promise = Mojo::Promise->new;
   my $count = 0;
-  my $fetch = sub {
+  my $fetch ; $fetch = sub {
 
     # Stop if there are no more URLs
     return unless my $url = shift @urls;
@@ -1418,7 +1418,7 @@ to process requests in smaller batches.
       say "$url: ", $tx->result->dom->at('title')->text;
 
       # Next request
-      __SUB__->();
+      $fetch->();
       $promise->resolve if --$count == 0;
     });
     $count++;
