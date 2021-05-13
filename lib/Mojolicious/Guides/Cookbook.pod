@@ -1413,7 +1413,7 @@ to process requests in smaller batches.
     # Stop if there are no more URLs
     return unless my $url = shift @urls;
 
-    # Avoid circular reference
+    # save __SUB__ for later use in another callback
     my $fetch = __SUB__;
 
     # Fetch the next title
