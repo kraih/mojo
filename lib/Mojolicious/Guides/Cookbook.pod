@@ -1409,6 +1409,7 @@ to process requests in smaller batches.
   my $promise = Mojo::Promise->new;
   my $count = 0;
   my $fetch = sub {
+
     # Stop if there are no more URLs
     return unless my $url = shift @urls;
 
