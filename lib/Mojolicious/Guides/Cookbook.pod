@@ -1412,8 +1412,10 @@ to process requests in smaller batches.
     # Stop if there are no more URLs
     return unless my $url = shift @urls;
 
-    # Fetch the next title
+    # Avoid circular reference
     my $fetch = __SUB__;
+
+    # Fetch the next title
     $ua->get($url => sub ($ua, $tx) {
       say "$url: ", $tx->result->dom->at('title')->text;
 
